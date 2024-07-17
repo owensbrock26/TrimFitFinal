@@ -132,9 +132,6 @@ function RecipesListLogic() {
       <View style={styles.bannerAd}>
       <MyBannerAdComponent style={styles.bannerAd} />
       </View>
-      <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
-        <Text style={styles.signInButtonText}>Sign In</Text>
-      </TouchableOpacity>
       <TextInput
         style={styles.searchBar}
         value={searchText}

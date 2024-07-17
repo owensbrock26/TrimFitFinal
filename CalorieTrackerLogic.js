@@ -22,7 +22,6 @@ import { Image } from "react-native";
 import TrashCan from "./assets/images/TrashCan.png";
 import MyBannerAdComponent from "./MyBannerAdComponent";
 
-
 function CalorieTrackerLogic() {
   const [totalCalories, setTotalCalories] = useState(
     originalNutrition.calories
@@ -249,63 +248,34 @@ function CalorieTrackerLogic() {
     );
   }
 
-
-
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: "#17181a" }}>
-        
       <View style={styles.bannerAd}>
-      <MyBannerAdComponent style={styles.bannerAd} />
+        <MyBannerAdComponent style={styles.bannerAd} />
       </View>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View>
           <RecipesListLogic onFoodSelect={addFood} />
           <View style={styles.containerBackground}>
-          <View style={styles.greyContainer}>
-            <View style={styles.bigCircle}>
-              <Text style={{ color: "white", fontWeight: "bold" }}>
-                Calories
-              </Text>
-              <TextInput
-                style={{ color: "white", fontWeight: "bold" }}
-                value={remainingNutrition.calories.toString()}
-                onChangeText={handleTotalCaloriesChange}
-                onEndEditing={handleEndEditing}
-                keyboardType="numeric"
-              />
-              <AnimatedCircularProgress
-                size={120}
-                width={15}
-                fill={
-                  ((totalCalories - remainingNutrition.calories) /
-                    totalCalories) *
-                  100
-                }
-                tintColor="#17b178"
-                backgroundColor="black"
-                rotation={270}
-                arcSweepAngle={180}
-                lineCap="round"
-              />
-            </View>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-around" }}
-            >
-              <View style={styles.smallCircle}>
+            <View style={styles.greyContainer}>
+              <View style={styles.bigCircle}>
                 <Text style={{ color: "white", fontWeight: "bold" }}>
-                  Protein{" "}
+                  Calories
                 </Text>
                 <TextInput
                   style={{ color: "white", fontWeight: "bold" }}
-                  value={remainingNutrition.protein.toString()}
-                  onChangeText={handleProteinChange}
+                  value={remainingNutrition.calories.toString()}
+                  onChangeText={handleTotalCaloriesChange}
+                  onEndEditing={handleEndEditing}
                   keyboardType="numeric"
                 />
                 <AnimatedCircularProgress
-                  size={70}
-                  width={10}
+                  size={120}
+                  width={15}
                   fill={
-                    ((protein - remainingNutrition.protein) / protein) * 100
+                    ((totalCalories - remainingNutrition.calories) /
+                      totalCalories) *
+                    100
                   }
                   tintColor="#17b178"
                   backgroundColor="black"
@@ -314,173 +284,201 @@ function CalorieTrackerLogic() {
                   lineCap="round"
                 />
               </View>
-              <View style={styles.smallCircle}>
-                <Text style={{ color: "white", fontWeight: "bold" }}>
-                  Carbs{" "}
-                </Text>
-                <TextInput
-                  style={{ color: "white", fontWeight: "bold" }}
-                  value={remainingNutrition.carbs.toString()}
-                  onChangeText={handleCarbsChange}
-                  keyboardType="numeric"
-                />
-                <AnimatedCircularProgress
-                  size={70}
-                  width={10}
-                  fill={((carbs - remainingNutrition.carbs) / carbs) * 100}
-                  tintColor="#17b178"
-                  backgroundColor="black"
-                  rotation={270}
-                  arcSweepAngle={180}
-                  lineCap="round"
-                />
-              </View>
-              <View style={styles.smallCircle}>
-                <Text style={{ color: "white", fontWeight: "bold" }}>
-                  Fats{" "}
-                </Text>
-                <TextInput
-                  style={{ color: "white", fontWeight: "bold" }}
-                  value={remainingNutrition.fats.toString()}
-                  onChangeText={handleFatsChange}
-                  keyboardType="numeric"
-                />
-                <AnimatedCircularProgress
-                  size={70}
-                  width={10}
-                  fill={((fats - remainingNutrition.fats) / fats) * 100}
-                  tintColor="#17b178"
-                  backgroundColor="black"
-                  rotation={270}
-                  arcSweepAngle={180}
-                  lineCap="round"
-                />
-              </View>
-              <View style={styles.smallCircle}>
-                <Text style={{ color: "white", fontWeight: "bold" }}>
-                  Sugar{" "}
-                </Text>
-                <TextInput
-                  style={{ color: "white", fontWeight: "bold" }}
-                  value={remainingNutrition.sugar.toString()}
-                  onChangeText={handleSugarChange}
-                  keyboardType="numeric"
-                />
-                <AnimatedCircularProgress
-                  size={70}
-                  width={10}
-                  fill={((sugar - remainingNutrition.sugar) / sugar) * 100}
-                  tintColor="#17b178"
-                  backgroundColor="black"
-                  rotation={270}
-                  arcSweepAngle={180}
-                  lineCap="round"
-                />
+              <View
+                style={{ flexDirection: "row", justifyContent: "space-around" }}
+              >
+                <View style={styles.smallCircle}>
+                  <Text style={{ color: "white", fontWeight: "bold" }}>
+                    Protein{" "}
+                  </Text>
+                  <TextInput
+                    style={{ color: "white", fontWeight: "bold" }}
+                    value={remainingNutrition.protein.toString()}
+                    onChangeText={handleProteinChange}
+                    keyboardType="numeric"
+                  />
+                  <AnimatedCircularProgress
+                    size={70}
+                    width={10}
+                    fill={
+                      ((protein - remainingNutrition.protein) / protein) * 100
+                    }
+                    tintColor="#17b178"
+                    backgroundColor="black"
+                    rotation={270}
+                    arcSweepAngle={180}
+                    lineCap="round"
+                  />
+                </View>
+                <View style={styles.smallCircle}>
+                  <Text style={{ color: "white", fontWeight: "bold" }}>
+                    Carbs{" "}
+                  </Text>
+                  <TextInput
+                    style={{ color: "white", fontWeight: "bold" }}
+                    value={remainingNutrition.carbs.toString()}
+                    onChangeText={handleCarbsChange}
+                    keyboardType="numeric"
+                  />
+                  <AnimatedCircularProgress
+                    size={70}
+                    width={10}
+                    fill={((carbs - remainingNutrition.carbs) / carbs) * 100}
+                    tintColor="#17b178"
+                    backgroundColor="black"
+                    rotation={270}
+                    arcSweepAngle={180}
+                    lineCap="round"
+                  />
+                </View>
+                <View style={styles.smallCircle}>
+                  <Text style={{ color: "white", fontWeight: "bold" }}>
+                    Fats{" "}
+                  </Text>
+                  <TextInput
+                    style={{ color: "white", fontWeight: "bold" }}
+                    value={remainingNutrition.fats.toString()}
+                    onChangeText={handleFatsChange}
+                    keyboardType="numeric"
+                  />
+                  <AnimatedCircularProgress
+                    size={70}
+                    width={10}
+                    fill={((fats - remainingNutrition.fats) / fats) * 100}
+                    tintColor="#17b178"
+                    backgroundColor="black"
+                    rotation={270}
+                    arcSweepAngle={180}
+                    lineCap="round"
+                  />
+                </View>
+                <View style={styles.smallCircle}>
+                  <Text style={{ color: "white", fontWeight: "bold" }}>
+                    Sugar{" "}
+                  </Text>
+                  <TextInput
+                    style={{ color: "white", fontWeight: "bold" }}
+                    value={remainingNutrition.sugar.toString()}
+                    onChangeText={handleSugarChange}
+                    keyboardType="numeric"
+                  />
+                  <AnimatedCircularProgress
+                    size={70}
+                    width={10}
+                    fill={((sugar - remainingNutrition.sugar) / sugar) * 100}
+                    tintColor="#17b178"
+                    backgroundColor="black"
+                    rotation={270}
+                    arcSweepAngle={180}
+                    lineCap="round"
+                  />
+                </View>
               </View>
             </View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginVertical: 10,
-            }}
-          >
-            <View style={{ flex: 1, height: 1, backgroundColor: "white" }} />
-            <View>
-              <Text style={{ width: 50, textAlign: "center", color: "white" }}>
-                Meals
-              </Text>
-            </View>
-            <View style={{ flex: 1, height: 1, backgroundColor: "white" }} />
-          </View>
-          <ScrollView>
-            <FlatList
-              style={{ height: 1000 }}
-              data={selectedMeals}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={({ item, index }) => (
-                <Swipeable
-                  renderRightActions={() => (
-                    <TouchableOpacity
-                      style={{
-                        backgroundColor: "red",
-                        justifyContent: "center",
-                        paddingHorizontal: 20,
-                      }}
-                      onPress={() => {
-                        const newMeals = selectedMeals.filter(
-                          (meal) => meal !== item
-                        );
-                        setSelectedMeals(newMeals);
-                      }}
-                    >
-                      <Image
-                        source={TrashCan}
-                        style={{ width: 20, height: 20 }}
-                      />
-                    </TouchableOpacity>
-                  )}
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginVertical: 10,
+              }}
+            >
+              <View style={{ flex: 1, height: 1, backgroundColor: "white" }} />
+              <View>
+                <Text
+                  style={{ width: 50, textAlign: "center", color: "white" }}
                 >
-                  <TouchableOpacity
-                    onPress={() => {
-                      console.log("Meal clicked");
-                    }}
+                  Meals
+                </Text>
+              </View>
+              <View style={{ flex: 1, height: 1, backgroundColor: "white" }} />
+            </View>
+            <ScrollView>
+              <FlatList
+                style={{ height: 1000 }}
+                data={selectedMeals}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item, index }) => (
+                  <Swipeable
+                    renderRightActions={() => (
+                      <TouchableOpacity
+                        style={{
+                          backgroundColor: "red",
+                          justifyContent: "center",
+                          paddingHorizontal: 20,
+                        }}
+                        onPress={() => {
+                          const newMeals = selectedMeals.filter(
+                            (meal) => meal !== item
+                          );
+                          setSelectedMeals(newMeals);
+                        }}
+                      >
+                        <Image
+                          source={TrashCan}
+                          style={{ width: 20, height: 20 }}
+                        />
+                      </TouchableOpacity>
+                    )}
                   >
-                    <View
-                      style={{
-                        backgroundColor: "#232526",
-                        padding: 10,
-                        paddingHorizontal: 20,
-                        borderRadius: 10,
-                        marginHorizontal: 10,
-                        marginVertical: 5,
+                    <TouchableOpacity
+                      onPress={() => {
+                        console.log("Meal clicked");
                       }}
                     >
                       <View
                         style={{
-                          flexDirection: "row",
-                          alignItems: "center",
-                          justifyContent: "space-between",
+                          backgroundColor: "#232526",
+                          padding: 10,
+                          paddingHorizontal: 20,
+                          borderRadius: 10,
+                          marginHorizontal: 10,
+                          marginVertical: 5,
                         }}
                       >
-                        <Text style={{ color: "white" }}>{item.name}</Text>
-                        <TextInput
-                          style={{ color: "white" }}
-                          value={
-                            item.quantity >= 0 ? item.quantity.toString() : "1"
-                          }
-                          onChangeText={(text) => {
-                            if (text === "") {
-                              const newMeals = [...selectedMeals];
-                              newMeals[index].quantity = 0; // Set quantity to 0 when input is empty
-                              setSelectedMeals(newMeals);
-                            } else {
-                              const newQuantity = parseInt(text, 10);
-                              if (
-                                !isNaN(newQuantity) &&
-                                newQuantity >= 0 &&
-                                newQuantity <= 25
-                              ) {
-                                const newMeals = [...selectedMeals];
-                                newMeals[index].quantity = newQuantity;
-                                setSelectedMeals(newMeals);
-                              }
-                            }
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "space-between",
                           }}
-                          keyboardType="numeric"
-                        />
+                        >
+                          <Text style={{ color: "white" }}>{item.name}</Text>
+                          <TextInput
+                            style={{ color: "white" }}
+                            value={
+                              item.quantity >= 0
+                                ? item.quantity.toString()
+                                : "1"
+                            }
+                            onChangeText={(text) => {
+                              if (text === "") {
+                                const newMeals = [...selectedMeals];
+                                newMeals[index].quantity = 0; // Set quantity to 0 when input is empty
+                                setSelectedMeals(newMeals);
+                              } else {
+                                const newQuantity = parseInt(text, 10);
+                                if (
+                                  !isNaN(newQuantity) &&
+                                  newQuantity >= 0 &&
+                                  newQuantity <= 25
+                                ) {
+                                  const newMeals = [...selectedMeals];
+                                  newMeals[index].quantity = newQuantity;
+                                  setSelectedMeals(newMeals);
+                                }
+                              }
+                            }}
+                            keyboardType="numeric"
+                          />
+                        </View>
                       </View>
-                    </View>
-                  </TouchableOpacity>
-                </Swipeable>
-              )}
-            />
-          </ScrollView>
+                    </TouchableOpacity>
+                  </Swipeable>
+                )}
+              />
+            </ScrollView>
           </View>
-        
         </View>
-        
       </TouchableWithoutFeedback>
       <TouchableOpacity
         style={{
@@ -498,7 +496,6 @@ function CalorieTrackerLogic() {
       >
         <Text style={{ color: "white", fontSize: 30 }}>+</Text>
       </TouchableOpacity>
-      
     </GestureHandlerRootView>
   );
 }
@@ -506,17 +503,16 @@ function CalorieTrackerLogic() {
 const styles = StyleSheet.create({
   greyContainer: {
     backgroundColor: "#232526",
-    paddingTop: '2%', // adjust the value as needed
+    paddingTop: "2%", // adjust the value as needed
     paddingBottom: 0, // adjust the value as needed
-    padding: '1%',
-    marginLeft: '2%',
-    marginRight: '2%',
+    padding: "1%",
+    marginLeft: "2%",
+    marginRight: "2%",
     borderRadius: 10,
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     margin: 2, // adjust the value as needed
-    
   },
   nutritionRow: {
     flexDirection: "row",
@@ -525,19 +521,19 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   smallCircle: {
-    margin: '2%',
+    margin: "2%",
     marginBottom: "-3%",
   },
   bigCircle: {
-   // marginBottom: -40,
-    marginBottom: '-11%',
+    // marginBottom: -40,
+    marginBottom: "-11%",
   },
   bannerAd: {
     width: 320,
     height: 50,
     alignSelf: "center", // Centers the ad horizontally
-    marginTop: '2%', // Adjusts the space from the top
-    marginBottom: '2%', // Adjusts the space from the bottom
+    marginTop: "2%", // Adjusts the space from the top
+    marginBottom: "2%", // Adjusts the space from the bottom
   },
   containerBackground: {
     backgroundColor: "#17181a", // The new background color
