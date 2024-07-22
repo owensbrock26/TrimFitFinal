@@ -127,11 +127,21 @@ function RecipesListLogic() {
     // Add any additional actions you want to take after signing in
   };
 
-  return (
-    <GestureHandlerRootView style={styles.container}>
-      <View style={styles.bannerAd}>
+/*
+
+<View style={styles.bannerAd}>
       <MyBannerAdComponent style={styles.bannerAd} />
       </View>
+
+
+*/
+
+
+
+
+  return (
+    <GestureHandlerRootView style={styles.container}>
+      
       <TextInput
         style={styles.searchBar}
         value={searchText}
